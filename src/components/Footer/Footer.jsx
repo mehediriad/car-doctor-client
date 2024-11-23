@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="bg-[#151515]">
             <footer className="footer  text-base-content p-10 max-w-7xl mx-auto">
                 <aside className="space-y-4">
-                    <img src={logo} alt="logo" />
+                    <Link to={`/`}><img src={logo} alt="logo" /></Link>
                     <p>
                          Edwin Diaz is a software and web <br />
                          technologies engineer, a life coach <br />

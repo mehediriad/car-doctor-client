@@ -9,6 +9,10 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import ManageAllOrders from "../Pages/ManageAllOrders/ManageAllOrders";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import About from "../Pages/About/About";
+import Contact from "../Pages/Contact/Contact";
+import Services from "../Pages/Services/Services";
+import Blogs from "../Pages/Blogs/Blogs";
 
 
 const router = createBrowserRouter([
@@ -28,6 +32,22 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            },
+            {
+                path: "/contact",
+                element: <Contact />,
+            },
+            {
+                path: "/blogs",
+                element: <Blogs />,
+            },
+            {
+                path: "/services",
+                element: <Services />,
             },
             {
                 path: "/add-new-service",
