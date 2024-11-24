@@ -6,9 +6,10 @@ import img5 from "../../assets/images/banner/5.jpg"
 import img6 from "../../assets/images/banner/6.jpg"
 
 const Banner = () => {
+    
     return (
         <div className="mb-8">
-            <div className="carousel w-full h-[600px] rounded-lg">
+            <div className="carousel w-full md:h-[600px] rounded-lg">
 
 
                 <div id="slide1" className="carousel-item relative w-full">
@@ -18,7 +19,7 @@ const Banner = () => {
                         <div className="absolute w-full h-full bg-[rgba(21, 21, 21)] bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21,0)]">
                         <div className="space-y-6 flex flex-col justify-center h-full ml-6 md:ml-20">
                             <div>
-                                <h2 className="text-6xl font-bold text-white">Affordable <br /> Price For Car <br /> Servicing</h2>
+                                <h2 className="lg:text-6xl md:text-4xl font-bold text-white">Affordable <br /> Price For Car <br /> Servicing</h2>
                             </div>
                             <div>
                                 <p className="text-white">There are many variations of passages of  available, but <br /> the majority have suffered alteration in some form</p>
