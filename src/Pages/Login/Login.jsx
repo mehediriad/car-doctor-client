@@ -8,7 +8,7 @@ import { useState } from "react";
 const Login = () => {
     const [show, setShow] = useState(false);
     return (
-        <div>
+        <div className="mb-20">
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
@@ -49,7 +49,7 @@ const Login = () => {
                                     <button className="text-[#3C79E6] bg-[#F5F5F8] p-3 rounded-full hover:bg-slate-200"><FaLinkedinIn /></button>
                                     <button className="bg-[#F5F5F8] p-3 rounded-full hover:bg-slate-200"><FcGoogle /></button>
                                 </div>
-                                <small>Have an account?<Link to={`/register`} className="btn btn-link text-[#FF3811]">Sign In</Link></small>
+                                <small>New Here?<Link to={`/register`} className="btn btn-link text-[#FF3811]">Sign Up</Link></small>
                             </div>
                         </div>
                     </div>
