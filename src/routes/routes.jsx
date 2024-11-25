@@ -13,6 +13,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Services from "../Pages/Services/Services";
 import Blogs from "../Pages/Blogs/Blogs";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             {
                 path: "/checkout",
                 element: <CheckOut />,
+            },
+            {
+                path: "/dashboard",
+                element: <Dashboard />,
             },
         ]
     },
