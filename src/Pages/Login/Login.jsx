@@ -2,16 +2,19 @@ import { FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import login from "../../assets/images/login/login.svg"
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+
 import Swal from "sweetalert2";
 
 const Login = () => {
     const [show, setShow] = useState(false);
     const { logInUser } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location);
+    
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -26,7 +29,7 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 if (user) {
-                    navigate("/")
+                    navigate(location?.state ? location?.state : "/")
                 }
 
             })

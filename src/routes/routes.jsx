@@ -14,6 +14,8 @@ import Contact from "../Pages/Contact/Contact";
 import Services from "../Pages/Services/Services";
 import Blogs from "../Pages/Blogs/Blogs";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import Appoinment from "../Pages/Appoinment/Appoinment";
 
 
 const router = createBrowserRouter([
@@ -72,7 +74,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard",
-                element: <Dashboard />,
+                element: <PrivateRoute><Dashboard /></PrivateRoute> ,
+            },
+            {
+                path: "/appoinment",
+                element: <PrivateRoute><Appoinment /></PrivateRoute> ,
             },
         ]
     },

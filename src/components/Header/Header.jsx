@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg"
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -6,7 +6,14 @@ import { AuthContext } from "../../provider/AuthProvider";
 const Header = () => {
 
     const { user,logOut } = useContext(AuthContext)
-    console.log(user);
+    const navigate = useNavigate()
+
+
+    const handleAppoinment = (e) =>{
+        e.preventDefault()
+        navigate("/appoinment")
+    }
+
     
 
     const handleLogOut = (e) =>{
@@ -116,7 +123,7 @@ const Header = () => {
                         </svg>
                     </button>
 
-                    <button className="btn btn-outline btn-warning">Appointment</button>
+                    <button onClick={handleAppoinment} className="btn btn-outline btn-warning">Appointment</button>
 
                     {
                         user && <div className="dropdown dropdown-end">
