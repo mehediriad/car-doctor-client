@@ -18,6 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import Appoinment from "../Pages/Appoinment/Appoinment";
 
 
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -79,6 +80,12 @@ const router = createBrowserRouter([
             {
                 path: "/appoinment",
                 element: <PrivateRoute><Appoinment /></PrivateRoute> ,
+            },
+            
+            {
+                path: "/checkout/:id",
+                element: <PrivateRoute><CheckOut /></PrivateRoute> ,
+                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
             },
         ]
     },
