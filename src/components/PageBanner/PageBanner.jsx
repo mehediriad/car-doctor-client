@@ -1,6 +1,9 @@
+
 import pageBannerImg from "../../assets/images/checkout/checkout.png"
 
 const PageBanner = ({ title, breadcrumb }) => {
+    
+    
     return (
         <div className="relative my-6">
             <div>
@@ -10,8 +13,8 @@ const PageBanner = ({ title, breadcrumb }) => {
                 <h2 className="text-white text-3xl font-bold ml-24 flex items-center h-full">{title}</h2>
             </div>
             <div className="absolute bottom-0  w-full text-center">
-                <div className="inline-block" style={{ clipPath: "polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%)" }}>
-                    <h3 className=" text-white text-md bg-[#FF3811]  py-2 px-10">{breadcrumb}</h3>
+                <div className="inline-block" style={{ clipPath: "polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)" }}>
+                    <h3 className=" text-white text-md bg-[#FF3811]  py-2 px-20">{breadcrumb}</h3>
                 </div>
             </div>
             {/* <div className="absolute bottom-0  w-full text-center">
