@@ -53,6 +53,7 @@ const Header = () => {
         <li><NavLink to={`/contact`}>Contact</NavLink></li>
         {!user && <li><NavLink to={`/login`}>Login</NavLink></li>}
         {user && <li><NavLink to={`/dashboard`}>Dashboard</NavLink></li>}
+        {user && <li><NavLink to={`/manage-all-orders`}>Manage Order</NavLink></li>}
 
     </>
     return (

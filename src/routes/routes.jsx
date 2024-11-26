@@ -59,7 +59,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/manage-all-orders",
-                element: <ManageAllOrders />,
+                element: <PrivateRoute><ManageAllOrders /></PrivateRoute>,
             },
             {
                 path: "/service-details",
