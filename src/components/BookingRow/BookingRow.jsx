@@ -28,7 +28,7 @@ const BookingRow = ({book,handleBookingDelete}) => {
             </td>
             <td>{date}</td>
             <th>
-                <span className="bg-[#FF3811] px-8 py-2 rounded-lg text-white capitalize">{status}</span>
+                <span className={`${status == "pending" && "bg-[#FF3811]"} ${status == "approved" && "bg-green-700"} ${status == "cancel" && "bg-red-900"} px-8 py-2 rounded-lg text-white capitalize`}>{status}</span>
             </th>
         </tr>
     );

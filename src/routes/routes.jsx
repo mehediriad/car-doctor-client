@@ -16,6 +16,7 @@ import Blogs from "../Pages/Blogs/Blogs";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Appoinment from "../Pages/Appoinment/Appoinment";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/manage-all-orders",
-                element: <PrivateRoute><ManageAllOrders /></PrivateRoute>,
+                element: <AdminRoute><ManageAllOrders /></AdminRoute>,
             },
             {
                 path: "/service-details",

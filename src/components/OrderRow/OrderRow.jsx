@@ -1,11 +1,11 @@
 import { IoIosCloseCircle } from "react-icons/io";
 
-const OrderRow = ({ order,handleUpdate }) => {
+const OrderRow = ({ order, handleUpdate,handleBookingDelete }) => {
     const { _id, img, title, price, date, email, status } = order;
     return (
         <tr>
             <th>
-                <button className="text-4xl"><IoIosCloseCircle /></button>
+                <button onClick={()=>handleBookingDelete(_id)} className="text-4xl"><IoIosCloseCircle /></button>
             </th>
             <td>
                 <div className="flex items-center gap-3">
@@ -29,10 +29,11 @@ const OrderRow = ({ order,handleUpdate }) => {
             <td>{date}</td>
             <th>
                 <div>
-                    <form className="flex"  onSubmit={(e) =>handleUpdate(e,_id)}>
+                    <form className="flex" onSubmit={(e) => handleUpdate(e, _id)}>
+
                         {
                             status == "pending" &&
-                            <select name="status" className="select rounded-r-none select-warning max-w-xs bg-white border-[#FF3811]">
+                            <select name="status" className="select select-sm rounded-r-none select-warning max-w-xs bg-white border-[#FF3811]">
                                 <option disabled >select</option>
                                 <option value="pending" selected>Pending</option>
                                 <option value="approved">Approved</option>
@@ -42,8 +43,8 @@ const OrderRow = ({ order,handleUpdate }) => {
                         }
                         {
                             status == "approved" &&
-                            <select name="status" className="select select-success rounded-r-none select-warning max-w-xs bg-white border-[#FF3811]">
-                                <option disabled >select</option>
+                            <select name="status" className="select select-sm rounded-r-none select-warning max-w-xs bg-white border-[#FF3811]">
+                                <option disabled>select</option>
                                 <option value="pending" >Pending</option>
                                 <option value="approved" selected>Approved</option>
                                 <option value="cancel">Cancel</option>
@@ -52,16 +53,18 @@ const OrderRow = ({ order,handleUpdate }) => {
                         }
                         {
                             status == "cancel" &&
-                            <select name="status" className="select select-error rounded-r-none select-warning max-w-xs bg-white border-[#FF3811]">
+                            <select name="status" className="select select-sm rounded-r-none select-warning max-w-xs bg-white border-[#FF3811]">
                                 <option disabled >select</option>
                                 <option value="pending" >Pending</option>
-                                <option value="approved">Approved</option>
+                                <option value="approved" selected>Approved</option>
                                 <option value="cancel" selected>Cancel</option>
 
                             </select>
                         }
 
-                        <button type="submit" className="btn bg-[#FF3811] text-white rounded-l-none">Update</button>
+
+
+                        <button type="submit" className="btn btn-sm bg-[#FF3811] text-white rounded-l-none">Update</button>
                     </form>
                 </div>
             </th>

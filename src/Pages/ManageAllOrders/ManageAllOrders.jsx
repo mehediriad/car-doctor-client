@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import OrderRow from "../../components/OrderRow/OrderRow";
+import Swal from "sweetalert2";
 
 
 const ManageAllOrders = () => {
@@ -9,8 +10,68 @@ const ManageAllOrders = () => {
     const handleUpdate = (e,id) =>{
         e.preventDefault()
         const status = e.target.status.value;
-        console.log(status,id);
+        console.log(status);
         
+
+        fetch(`http://localhost:5000/booking/${id}`, {
+            method: "PATCH",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify({status})
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.modifiedCount > 0) {
+                
+                
+                Swal.fire({
+                    title: "Updated!",
+                    text: "Status has been updated.",
+                    icon: "success"
+                });
+
+                
+            }
+        })
+        
+        
+    }
+
+
+    const handleBookingDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/booking/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const restOrders = orders.filter(book => book._id !== id)
+                            
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+
+                            setOrders(restOrders)
+                        }
+                    })
+
+            }
+        });
+
     }
     useEffect(() => {
         fetch(`http://localhost:5000/booking`)
@@ -38,7 +99,7 @@ const ManageAllOrders = () => {
                         <tbody>
                             {
                               
-                                    orders.map(order => <OrderRow key={order._id} handleUpdate={handleUpdate} order={order} ></OrderRow>)
+                                    orders.map(order => <OrderRow key={order._id} handleUpdate={handleUpdate} handleBookingDelete={handleBookingDelete} order={order} ></OrderRow>)
                                 
                             }
                             
