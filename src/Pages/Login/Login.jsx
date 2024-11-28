@@ -7,13 +7,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
     const [show, setShow] = useState(false);
     const { logInUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location);
+    // console.log(location);
     
 
     const handleLogin = (e) => {
@@ -21,7 +22,7 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(email, password);
+        // console.log(email, password);
 
 
         logInUser(email, password)
@@ -29,7 +30,29 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 if (user) {
-                    navigate(location?.state ? location?.state : "/")
+                    // fetch("http://localhost:5000/jwt",{
+                    //     method:"POST",
+                    //     headers:{
+                    //         "content-type":"application/json"
+                    //     },
+                    //     credentials:'include',
+                    //     body: JSON.stringify({email:user.email})
+                    // })
+                    // .then(res =>res.json())
+                    // .then(data => {
+                    //     if(data.success){
+                    //         navigate(location?.state ? location?.state : "/")
+                    //     }
+                    // })
+
+
+                    axios.post("http://localhost:5000/jwt",{email:user.email},{withCredentials:true})
+                    .then(res =>{
+                        if(res.data.success){
+                            navigate(location?.state ? location?.state : "/")
+                        }
+                    })
+                    
                 }
 
             })

@@ -3,6 +3,7 @@ import PageBanner from "../../components/PageBanner/PageBanner";
 import { AuthContext } from "../../provider/AuthProvider";
 import BookingRow from "../../components/BookingRow/BookingRow";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const CartDetails = () => {
@@ -47,9 +48,18 @@ const CartDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/booking?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setBooking(data))
+        // fetch(`http://localhost:5000/booking?email=${user?.email}`,{
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     credentials:'include'
+        // })
+        //     .then(res => res.json())
+        //     .then(data => setBooking(data))
+
+        axios.get(`http://localhost:5000/booking?email=${user?.email}`,{withCredentials:true})
+        .then(res => setBooking(res.data))
     }, [])
     return (
         <div>

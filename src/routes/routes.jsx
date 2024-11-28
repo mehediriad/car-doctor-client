@@ -65,7 +65,7 @@ const router = createBrowserRouter([
             {
                 path: "/service-details/:id",
                 element: <ServiceDetails />,
-                loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+                loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`,{credentials:'include'})
             },
             {
                 path: "/cart-details",
