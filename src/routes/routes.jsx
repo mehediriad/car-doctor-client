@@ -17,6 +17,10 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Appoinment from "../Pages/Appoinment/Appoinment";
 import AdminRoute from "./AdminRoute";
+import MakePayment from "../Pages/MakePayment/MakePayment";
+import PaymentSuccess from "../Pages/PaymentSuccess/PaymentSuccess";
+import PaymentFail from "../Pages/PaymentFail/PaymentFail";
+import PaymentCancel from "../Pages/PaymentCancel/PaymentCancel";
 
 
 
@@ -88,6 +92,23 @@ const router = createBrowserRouter([
                 path: "/checkout/:id",
                 element: <PrivateRoute><CheckOut /></PrivateRoute> ,
                 loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+            },
+            {
+                path: "/make-payment/:uid",
+                element: <PrivateRoute><MakePayment /></PrivateRoute> ,
+                loader: ({params}) => fetch(`http://localhost:5000/booking/${params.uid}`)
+            },
+            {
+                path: "/payment-success",
+                element: <PrivateRoute><PaymentSuccess /></PrivateRoute> ,    
+            },
+            {
+                path: "/payment-fail",
+                element: <PrivateRoute><PaymentFail /></PrivateRoute> ,    
+            },
+            {
+                path: "/payment-cancel",
+                element: <PrivateRoute><PaymentCancel /></PrivateRoute> ,    
             },
             
         ]

@@ -21,7 +21,7 @@ const Header = () => {
 
                   setTotal(totalPrice)
             })
-    }, [booking])
+    }, [])
 
 
     const handleAppoinment = (e) =>{
