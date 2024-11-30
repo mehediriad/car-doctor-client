@@ -69,7 +69,7 @@ const router = createBrowserRouter([
             {
                 path: "/service-details/:id",
                 element: <ServiceDetails />,
-                loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`,{credentials:'include'})
+                loader:({params})=> fetch(`https://car-doctor-server-brown-zeta.vercel.app/${params.id}`,{credentials:'include'})
             },
             {
                 path: "/cart-details",
@@ -91,12 +91,12 @@ const router = createBrowserRouter([
             {
                 path: "/checkout/:id",
                 element: <PrivateRoute><CheckOut /></PrivateRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({params}) => fetch(`https://car-doctor-server-brown-zeta.vercel.app/services/${params.id}`)
             },
             {
                 path: "/make-payment/:uid",
                 element: <PrivateRoute><MakePayment /></PrivateRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/booking/${params.uid}`)
+                loader: ({params}) => fetch(`https://car-doctor-server-brown-zeta.vercel.app/booking/${params.uid}`, {credentials:"include"})
             },
             {
                 path: "/payment-success",

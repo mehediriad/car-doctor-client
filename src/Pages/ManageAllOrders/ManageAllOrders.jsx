@@ -13,7 +13,7 @@ const ManageAllOrders = () => {
         console.log(status);
         
 
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`https://car-doctor-server-brown-zeta.vercel.app/booking/${id}`, {
             method: "PATCH",
             headers:{
                 "content-type":"application/json"
@@ -51,7 +51,7 @@ const ManageAllOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/booking/${id}`, {
+                fetch(`https://car-doctor-server-brown-zeta.vercel.app/booking/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -74,9 +74,11 @@ const ManageAllOrders = () => {
 
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/booking`)
+        fetch(`https://car-doctor-server-brown-zeta.vercel.app/booking`,{credentials:"include"})
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data)
+            })
     }, [])
     return (
         <div>

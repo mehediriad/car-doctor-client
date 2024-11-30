@@ -23,7 +23,7 @@ const CartDetails = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/booking/${id}`, {
+                fetch(`https://car-doctor-server-brown-zeta.vercel.app/booking/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -58,7 +58,7 @@ const CartDetails = () => {
         //     .then(res => res.json())
         //     .then(data => setBooking(data))
 
-        axios.get(`http://localhost:5000/booking?email=${user?.email}`,{withCredentials:true})
+        axios.get(`https://car-doctor-server-brown-zeta.vercel.app/booking?email=${user?.email}`,{withCredentials:true})
         .then(res => setBooking(res.data))
     }, [])
     return (

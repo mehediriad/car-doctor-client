@@ -29,7 +29,10 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                if (user) {
+
+                navigate(location?.state ? location?.state : "/")
+                // if (user) {
+                    
                     // fetch("http://localhost:5000/jwt",{
                     //     method:"POST",
                     //     headers:{
@@ -46,14 +49,14 @@ const Login = () => {
                     // })
 
 
-                    axios.post("http://localhost:5000/jwt",{email:user.email},{withCredentials:true})
-                    .then(res =>{
-                        if(res.data.success){
-                            navigate(location?.state ? location?.state : "/")
-                        }
-                    })
+                    // axios.post("http://localhost:5000/jwt",{email:user.email},{withCredentials:true})
+                    // .then(res =>{
+                    //     if(res.data.success){
+                        // navigate(location?.state ? location?.state : "/")
+                    //     }
+                    // })
                     
-                }
+                // }
 
             })
             .catch((error) => {

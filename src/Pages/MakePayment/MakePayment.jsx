@@ -15,7 +15,7 @@ const MakePayment = () => {
        e.preventDefault()
         const booking ={userName,email,phone,title,img,date,price,message,serviceId:bookingData._id}
 
-        axios.post(`http://localhost:5000/create-payment/${_id}`,booking)
+        axios.post(`https://car-doctor-server-brown-zeta.vercel.app/create-payment/${_id}`,booking)
         .then(res => {
             window.location.replace(res.data?.redirectURL)
         })

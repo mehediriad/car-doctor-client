@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.init";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut } from "firebase/auth";
+import axios from "axios";
 
 
 export const AuthContext = createContext()
@@ -33,20 +34,29 @@ const AuthProvider = ({ children }) => {
     }
     useEffect(() => {
         setLoading(true)
-        const unSubscribe = onAuthStateChanged(auth, (user) => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
 
-
-            if (user) {
-                setUser(user)
-
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/auth.user
-                const uid = user.uid;
+            const userEmail = currentUser?.email || user?.email
+            if (currentUser) {
+                setUser(currentUser)
+                
+                const uid = currentUser.uid;
                 // ...
                 setLoading(false)
+
+                axios.post("https://car-doctor-server-brown-zeta.vercel.app/login",{email:userEmail},{withCredentials:true})
+                .then(res =>{
+                    console.log("login",res.data);
+                    
+                })
             } else {
                 setUser(null)
                 setLoading(false)
+                axios.post("https://car-doctor-server-brown-zeta.vercel.app/logout",{email:userEmail},{withCredentials:true})
+                .then(res =>{
+                    console.log("logout",res.data);
+                    
+                })
             }
 
 

@@ -11,7 +11,7 @@ const Header = () => {
     const [total,setTotal] = useState(0);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/booking?email=${user?.email}`)
+        fetch(`https://car-doctor-server-brown-zeta.vercel.app/booking?email=${user?.email}`,{credentials:"include"})
             .then(res => res.json())
             .then(data => {
                 setBooking(data)
@@ -21,7 +21,7 @@ const Header = () => {
 
                   setTotal(totalPrice)
             })
-    }, [])
+    }, [booking])
 
 
     const handleAppoinment = (e) =>{
