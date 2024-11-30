@@ -69,7 +69,7 @@ const router = createBrowserRouter([
             {
                 path: "/service-details/:id",
                 element: <ServiceDetails />,
-                loader:({params})=> fetch(`https://car-doctor-server-brown-zeta.vercel.app/${params.id}`,{credentials:'include'})
+                loader:({params})=> fetch(`https://car-doctor-server-brown-zeta.vercel.app/services/${params.id}`,{credentials:'include'})
             },
             {
                 path: "/cart-details",
